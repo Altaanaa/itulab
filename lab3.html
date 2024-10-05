@@ -3,100 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab3 T.Altantsetseg</title>
+    <title>TheFacebook Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #3b5998;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            padding-left: 60px;
+        }
+        nav {
+            background-color: #3b5998;
+            padding: 0px;
+            display: inline;
+            justify-content: space-around;                                                      
+            
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            text-align: right;
+        }
+        main {
+            display: flex;
+            margin: 20px;
+        }
+        aside {
+            width: 200px;
+            background-color: #fff;
+            padding: 15px;
+            margin-right: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        section {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #3b5998;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .profile-picture {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .profile-picture img {
+            width: 60px;
+            border-radius: 10px;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        .info-list li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-<style>
-     body {
-    font-family: Arial, sans-serif;
-    background-color: #e7ebf2;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-.profile-page {
-    width: 800px;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-.header {
-    background-color: #3b5998;
-    color: white;
-    font-size: 35px;
-    padding: 5px 10px;
-    font-weight: bold;
-}
-
-.header-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 0 5px;
-}
-
-.header-links a:hover {
-    text-decoration: underline;
-}
-.quicksearch{
-    padding: 0px;
-    margin: 0px;
-}
-.bodyNav{
-    background-color: #3b5998;
-    color: white;
-    font-size: 24px;
-    padding: 0px 5px;
-    font-weight: bold;
-    margin:0;
-}
-</style>
 <body>
-    <!-- Header хэсэг -->
-    <header class="header">
-        <table>
-            <tr>
-                <td colspan="3" class="header-logo" >[thefacebook]</td>
-                <td class="header-links">
-                    <nav class="navbar">
-                        <tr>
-                            <td><a href="#">Home</a></td>
-                            <td><a href="#">Search</a></td>
-                            <td><a href="#">Global</a></td>
-                            <td><a href="#">Social net</a></td>
-                            <td><a href="#">Invite</a></td>
-                            <td><a href="#">Faq</a></td>
-                            <td><a href="#">Logout</a></td>
-                        </tr>
-                    </nav>
-                </td>
-            </tr>
-            </table>
-    </header>   
-    <!-- Navbar хэсэг -->
-    <aside>
-        <section >
-            <input class="quicksearch" type="text" placeholder="Search...">
-            <h3 class="quicksearch">Quick Search</h3>
-            <input type="button" value="Go">
-        </section>
-        <nav>
-            <ul type="none">
-                <li><a href="#"> My profile [Edit]</a></li>
+    <header>
+        <h1>TheFacebook</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Search</a>
+        <a href="#">Global</a>
+        <a href="#">Social Net</a>
+        <a href="#">Invite</a>
+        <a href="#">FAQ</a>
+        <a href="#">Logout</a>
+    </nav>
+
+    <main>
+        <aside>
+            <h2>Quick Search</h2>
+            <input type="text" placeholder="Search..." />
+            <ul class="info-list">
+                <li><a href="#">My Profile</a></li>
                 <li><a href="#">My Groups</a></li>
-                <li><a href="#">My friends</a></li>
-                <li><a href="#">My messages</a></li>
-                <li><a href="#">My mobile info</a></li>
-                <li><a href="#">My privacy</a></li>
+                <li><a href="#">My Friends</a></li>
+                <li><a href="#">My Privacy</a></li>
             </ul>
-        </nav>
-    </aside>
-    <!-- Body хэсэг -->
-     <nav class="bodyNav">
-        <p>Altantsetseg's profile This is you</p>
-     </nav>
+        </aside>
+
+        <section>
+            <div class="profile-picture">
+                <img src="your-photo-url.jpg" alt="Profile Picture">
+            </div>
+            <h2>Altantsetseg's profile</h2>
+            <ul class="info-list">
+                <li><strong>Name:</strong> ALtantsetseg, BS</li>
+                <li><strong>Member Since:</strong> January 12, 2015</li>
+                <li><strong>Last Update:</strong> February 3, 2024</li>
+                <li><strong>Email:</strong> 21B1NUM2360@stud.num.edu.mn</li>
+                <li><strong>Status:</strong> Student</li>
+                <li><strong>Concentration:</strong> Financial analyst, Mathematics</li>
+                <li><strong>Relationship Status:</strong> ...</li>
+                <li><strong>Interests:</strong> Book, Bike, Tennis</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TheFacebook | All rights reserved</p>
+    </footer>
 </body>
 </html>
