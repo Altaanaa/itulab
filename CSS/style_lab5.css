@@ -1,0 +1,20 @@
+
+img{
+    float: left;
+    
+}
+.img{
+    width: 100%;
+    height: 10px;
+    background-color: #352BA5;
+}
+header {
+    width: 100%;
+    height: 20%;
+    background-color: #13124F;
+
+}
+header section .header{
+    color: aliceblue;
+    float: right;
+}
