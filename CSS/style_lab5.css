@@ -67,6 +67,7 @@ aside{
     width: 80%;
     border-radius: 10px;
     margin-top: 40px;
+    padding: 5px 0;
 }
 i {
     margin-left: 130px;
@@ -91,7 +92,7 @@ i {
 }
 .bluebg{
     background-color: #352BA5;
-    height: 100px;
+    height: 200px;
     width: 80%;
 }
 .bluebg p {
@@ -111,6 +112,9 @@ i {
 .btn-send{
     width: 90%;
     margin-left: 20px;
+    height: 30px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 .bg-lightblue{
     background-color: #5f54d0;
