@@ -1,20 +1,174 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Толгой хэсэг */
 img{
-    float: left;
+    height: 30px;
+    width: auto;
     
 }
 .img{
-    width: 100%;
-    height: 10px;
+    display: block;
     background-color: #352BA5;
+    padding-left: 50px;
+    padding-top: 5px;
 }
 header {
-    width: 100%;
-    height: 20%;
     background-color: #13124F;
+    height: 35vh;
 
 }
-header section .header{
+.header{
+    height: 30vh;
+}
+.header h1 {
+    color: white;
+    padding: 50px 50px 0 50px;
+    font-size: 50px;
+}
+.header p {
+    color: white;
+    padding: 0px 0px 20px 50px;
+    margin-bottom: 0;
+
+}
+.btn-pink {
+    background-color: #F61067;
+    border: none;
+    text-decoration: none;
+    padding:  10px ;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 18px;
+
+}
+/* Их бие хэсэг */
+#container {
+    display: flex;
+    padding-top: 10px;
+}
+/* uurchlult alga */
+.item:first-child{
+    flex: 3;
+}
+/* Navbar хэсэг */
+aside{
+    width: 40%;
+}
+.head-nav {
+    background-color: #F61067;
+    height: 40px;
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+i {
+    margin-left: 130px;
     color: aliceblue;
-    float: right;
+    margin-top: 5px;
+
+}
+.head-nav h3 {
+    color: white;
+    text-align: center;
+    margin-top: -25px;
+}
+.grey-section {
+    background-color: #9090a5;
+    height: 40px;
+    margin-top: 5px;
+    width: 80%;
+}
+.grey-section p {
+    color: white;
+    text-align: center;
+}
+.bluebg{
+    background-color: #352BA5;
+    height: 100px;
+    width: 80%;
+}
+.bluebg p {
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
+.bluebg input{
+    background-color: #352BA5;
+    width: 90%;
+    display: block;
+    margin: 5px 20px;
+}
+.bluebg input text{
+    color: aliceblue;
+}
+.btn-send{
+    width: 90%;
+    margin-left: 20px;
+}
+.bg-lightblue{
+    background-color: #5f54d0;
+    height: 30px;
+    width: 80%;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 5px;
+}
+.bottom-nav{
+    border: 5px rgb(108, 104, 104);
+    margin: 40px 0;
+}
+.bottom-nav p {
+    color: black;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+.btn-green{
+    border: 2px #2AD392;
+    color: #2AD392;
+    padding:  10px ;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: 1opx;
+    width: 40%;
+   
+
+}
+.btn-bottompink{
+    width: 40%;
+    margin-left: 0;
+}
+/* Main хэсэг */
+.item {
+    margin-left: 40px;
+}
+.item p{
+    width: 80%;
+    margin: 10px 0;
+}
+#alert {
+    background-color: #9090a5;
+    color: white;
+    padding-left: 200px;
+    width: 95%;
+
+}
+/* Footer  хэсэг*/
+footer{
+    background-color: #352BA5;
+    height: 5vh;
+    width: 100vw;
+    color: white;
+    text-align: center;
 }
