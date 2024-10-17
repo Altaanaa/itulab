@@ -46,3 +46,8 @@ i{
 .btn-send{
     width: 90%;
 }
+.head-nav i{
+    position: relative;
+    left: -10px;
+    top: 4px;
+}
