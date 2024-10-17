@@ -20,6 +20,7 @@ img{
 header {
     background-color: #13124F;
     height: 35vh;
+    width: auto;
 
 }
 .header{
@@ -48,6 +49,9 @@ header {
     font-size: 18px;
 
 }
+.btn-pink:hover{
+    background-color: aquamarine;
+}
 /* Их бие хэсэг */
 #container {
     display: flex;
@@ -67,7 +71,8 @@ aside{
     width: 80%;
     border-radius: 10px;
     margin-top: 40px;
-    padding: 5px 0;
+    padding-bottom: 10px;
+    
 }
 i {
     margin-left: 130px;
@@ -105,6 +110,7 @@ i {
     width: 90%;
     display: block;
     margin: 5px 20px;
+    margin-bottom: 10px;
 }
 .bluebg input text{
     color: aliceblue;
@@ -112,9 +118,8 @@ i {
 .btn-send{
     width: 90%;
     margin-left: 20px;
-    height: 30px;
+    height: 40px;
     margin-top: 10px;
-    padding-bottom: 10px;
 }
 .bg-lightblue{
     background-color: #5f54d0;
@@ -125,29 +130,43 @@ i {
     font-size: 12px;
     padding-top: 5px;
 }
-.bottom-nav{
-    border: 5px rgb(108, 104, 104);
-    margin: 40px 0;
+.bottom-nav {
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.bottom-nav p {
-    color: black;
+h2 {
+    margin-top: 0;
     font-size: 14px;
+    color: #333;
     text-align: center;
-    text-decoration: none;
-    margin-bottom: 40px;
 }
-.btn-green{
-    border: 2px #2AD392;
-    color: #2AD392;
-    padding:  10px ;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 18px;
-    position: relative;
-    left: 1opx;
+.bar-chart {
+    display: flex;
+    height: 30px;
+    margin-top: 10px;
+}
+.bar-cool {
+    width: 60%;
+    background-color: #ff1493;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+.bar-lame {
     width: 40%;
-   
-
+    background-color: #00fa9a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
 }
 .btn-bottompink{
     width: 40%;
