@@ -6,6 +6,9 @@
     padding: 30px 30px 0 30px;
  
 }
+.header{
+    height: 200px;
+}
 .btn-pink{
     margin: 10px;
 }
@@ -21,6 +24,9 @@ header p{
     text-align: center;
 }
 .btn-pink{
+    display: none;
+}
+.head-nav i{
     display: none;
 }
 
