@@ -1,70 +1,184 @@
-*{
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/*Header  */
+body{
+    font-family:"Roboto", sans-serif;
+}
+/* Utility classuud */
+span{
+    color: rgb(109, 212, 212);
+}
+.bg-gray{
+    background-color: rgb(248,249,250);
+}
+.gray{
+    color: gray;
+}
+/* Толгой хэсэг */
 header{
-    height: 10vh;
-    background-color: black;
+    display:flex;
+    justify-content: space-between;
+    z-index: 1;
+    padding: 2rem 1rem;
+    border-bottom: 0.01rem solid rgb(227, 222, 222);
+
+}
+.head{
+    margin-top: 40px;
+    margin-right: 5rem;
+   
+}
+.head input{
+    border: none;
+    border-bottom: 1px solid rgb(221, 219, 219);
+}
+.head i{
+    padding-right: 2rem;
+}
+/* Nav */
+nav{
+    margin: 1rem 5rem;
     display: flex;
+    justify-content: space-between;
 }
-.logo{
-    height: 10vh;
-}
-button {
-    background-color: black;
-    color: white;
-    padding: 0 20px;
-    border-width: 0;
-}
-#searchbar {
-    height: 10vh;
-    width: 60%;
-    font-size: 30px;
+nav ul {
     display: flex;
-    align-items: center;
-    overflow: hidden;
-    flex: 3;
+    list-style: none;
 }
-#searchbar input{
-    background-color: white;
-    font-size: 20px;
-    border-width: 0;
-    width: 80%;
-    height: 40% ;
-    
-}
-#dropdown {
-    background-color: grey;
-    color: rgb(93, 91, 91);
-    height: 40%;
-}
-#dropdown option{
-    color: black;
-    background-color: grey;
-}
-#searchbar .search{
-    background-color: rgba(246, 185, 17,1);
-    color: black;
-    font-size: 20px;
+a {
+    text-decoration: none;
+    font-size: 14px;
     padding: 10px;
-    margin-left: 0;
-    height: 40%;
+    color: black;
 }
-#lang{
-    background-color: black;
-    color: white;
-    border: 0;
+.scrolling-section {
+    display: flex; /* Make items align in a row */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent line breaks */
+    width: 100%; /* Full-width container */
+    scroll-snap-type: x proximity; /* Optional: snap scrolling  mandatory gej bn*/
 }
-#head-2{
-    align-items: flex-start;
-    background-color: rgb(2, 2, 38);
-    height: 5vh;
+.scroll-item {
+    min-width: 100%; /* Minimum width for each item */
+    border: 1px solid #ddd;
+    scroll-snap-align: start; /* Optional: snap to start of item */
 }
-#head-2{
-    background-color: aqua;
-    height: 1000px;
-    width: auto;
-    display: block;
+/* Ontsloh heseg */
+article{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 5rem;
+    font-family: sans-serif ;
+}
+article h1{
+    font-size: 30px;
+}
+/* 3 section */
+#box{
+    display: flex;
+    margin: 1rem 30px;
+}
+.item {
+    flex: 1;
+    text-align: left;
+    width: 30%;
+    border: 1px solid rgb(224, 223, 223);
+    margin: 20px;
+}
+.item img{
+    width: 100%;
+    height: auto;
+}
+.item h2{
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.item h2:hover{
+    color: rgb(142, 26, 26);
+}
+.item h4{
+    padding: 0 20px;
+    color: rgb(127, 126, 126);
+}
+.item p{
+    padding: 0 20px;
+    font-size: 14px;
+    overflow: hidden;   
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+button{
+    margin: 5px 20px;
+    padding: 5px;
+}
+/* Company section */
+#companies{
+    display: flex; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    width: 100%; 
+    scroll-snap-type: x proximity; 
+}
+.company-item{
+    min-width: 20%; 
+    scroll-snap-align: start; 
+    margin: 0 40px;
+}
+/* Holboo barih */
+#contact{
+    display: flex;
+    justify-content:center;
+    border-bottom: 0.5px solid rgb(153, 147, 147);
+}
+.gray-section{
+    width: 30%;
+    padding: 60px;
+    margin: 40px 0;
+}
+.gray-section ul{
+    list-style: none;
+}
+.gray-section ul li{
+    padding: 10px;
+}
+.gray-section:hover{
+    background-color: white;
+
+}
+.gray-section a p:hover{
+    color: rgb(145, 22, 22);
+}
+.gray-section a:hover{  
+    text-decoration: underline;
+}
+#contact-ig h1{
+    text-align: center;
+    margin: 10px;
+}
+#follow{
+    display: flex;
+    justify-content: center;
+}
+.ig{
+    width: 10%;
+    padding: 30px;
+}
+.ig img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+/* Footer */
+footer{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 40px;
+}
+footer ul li{
+    list-style: none;
+    display: inline;
 }

@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Header  */
+header{
+    height: 10vh;
+    background-color: black;
+    display: flex;
+}
+.logo{
+    height: 10vh;
+}
+button {
+    background-color: black;
+    color: white;
+    padding: 0 20px;
+    border-width: 0;
+}
+#searchbar {
+    height: 10vh;
+    width: 60%;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex: 3;
+}
+#searchbar input{
+    background-color: white;
+    font-size: 20px;
+    border-width: 0;
+    width: 80%;
+    height: 40% ;
+    
+}
+#dropdown {
+    background-color: grey;
+    color: rgb(93, 91, 91);
+    height: 40%;
+}
+#dropdown option{
+    color: black;
+    background-color: grey;
+}
+#searchbar .search{
+    background-color: rgba(246, 185, 17,1);
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 0;
+    height: 40%;
+}
+#lang{
+    background-color: black;
+    color: white;
+    border: 0;
+}
+#head-2{
+    align-items: flex-start;
+    background-color: rgb(2, 2, 38);
+    height: 5vh;
+}
+#head-2{
+    background-color: aqua;
+    height: 1000px;
+    width: auto;
+    display: block;
+}
