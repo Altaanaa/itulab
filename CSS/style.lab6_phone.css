@@ -40,11 +40,12 @@
     .item {
         margin: 10px 0;
     }
+    #companies{
+        display: none;
+    }
 
     .company-item {
-        margin: 0 10px;
-        width: 100%;
-        padding-right: 100px;
+        display: none;
     }
 
     #contact {
