@@ -1,0 +1,44 @@
+ nav {
+        margin: 1rem 2rem;
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    article {
+        margin: 1rem 2rem;
+        flex-direction: column;
+    }
+
+    #box {
+        flex-direction: column;
+        margin: 1rem 2rem;
+    }
+
+    .item {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .company-item {
+        min-width: 30%;
+        margin: 0 20px;
+    }
+
+    #contact {
+        flex-wrap: wrap;
+    }
+
+    .gray-section {
+        width: 45%;
+        padding: 30px;
+        margin: 20px 10px;
+    }
+
+    .ig {
+        width: 15%;
+        padding: 20px;
+    }

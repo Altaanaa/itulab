@@ -1,0 +1,81 @@
+
+    body header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+    body .head {
+        margin: 20px 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav {
+        margin: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .scrolling-section {
+        margin: 0;
+    }
+
+    article {
+        margin: 1rem;
+    }
+
+    #box {
+        margin: 1rem;
+    }
+
+    .item {
+        margin: 10px 0;
+    }
+
+    .company-item {
+        margin: 0 10px;
+        width: 100%;
+        padding-right: 100px;
+    }
+
+    #contact {
+        display: block;
+        width: 100%;
+        justify-content: baseline;
+    }
+
+    .gray-section {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    #follow {
+        flex-wrap: wrap;
+    }
+
+    .ig {
+        width: 20%;
+        padding: 10px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+    }
+
+    footer ul li {
+        display: block;
+        margin: 5px 0;
+    }
