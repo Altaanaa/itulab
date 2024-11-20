@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ХБЕХ олох</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        .input-area {
+            margin: 20px 0;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+            width: 60px;
+        }
+        .steps {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        // ХИЕХ (GCD) олох функц
+        function gcd(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        // Хоёр тооны ХБЕХ олох функц
+        function lcm(a, b) {
+            return Math.abs(a * b) / gcd(a, b);
+        }
+
+        // Массивын ХБЕХ олох функц
+        function findLCMOfArray(arr) {
+            let result = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                result = lcm(result, arr[i]);
+            }
+            return result;
+        }
+
+        function calculateLCM() {
+            // Оролтуудыг авах
+            let numbers = [];
+            let allInputs = true;
+            let steps = [];
+
+            // 5 тоог цуглуулах
+            for(let i = 1; i <= 5; i++) {
+                let num = parseInt(document.getElementById('num' + i).value);
+                if(isNaN(num) || num <= 0) {
+                    allInputs = false;
+                    break;
+                }
+                numbers.push(num);
+            }
+
+            if(!allInputs) {
+                document.getElementById('result').innerHTML = "Бүх тоог зөв оруулна уу!";
+                return;
+            }
+
+            // Алхам алхамаар ХБЕХ олох
+            let currentLCM = numbers[0];
+            steps.push(`Эхний тоо: ${currentLCM}`);
+            
+            for(let i = 1; i < numbers.length; i++) {
+                let nextNumber = numbers[i];
+                let gcdValue = gcd(currentLCM, nextNumber);
+                currentLCM = (currentLCM * nextNumber) / gcdValue;
+                steps.push(`${currentLCM} болон ${nextNumber}-ийн ХБЕХ: ${currentLCM}`);
+            }
+
+            // Үр дүнг харуулах
+            document.getElementById('result').innerHTML = `
+                <h3>ХБЕХ = ${currentLCM}</h3>
+                <div class="steps">
+                    <h4>Бодолтын алхамууд:</h4>
+                    ${steps.join('<br>')}
+                </div>
+            `;
+        }
+
+        window.onload = function() {
+            // Input талбаруудыг үүсгэх
+            let inputHTML = '<div class="input-area">';
+            for(let i = 1; i <= 5; i++) {
+                inputHTML += `<input type="number" id="num${i}" placeholder="${i}-р тоо">`;
+            }
+            inputHTML += '<br><button onclick="calculateLCM()">ХБЕХ олох</button></div>';
+            inputHTML += '<div id="result"></div>';
+            
+            document.querySelector('.container').innerHTML = inputHTML;
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>5 тооны ХБЕХ олох</h2>
+    </div>
+</body>
+</html>

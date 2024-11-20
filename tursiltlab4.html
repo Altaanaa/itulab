@@ -1,188 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Altantsetseg's CV</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/itu_lab/CSS/style_lab4.css">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторийн ажил №8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .result {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var n = window.prompt("Тоог оруулна уу", "0");
+            
+            // Тоонд хөрвүүлэх
+            n = parseInt(n);
+            // Хэрвээ алдаатай бол 
+            if (isNaN(n)) {
+                document.body.innerHTML = '<div class="result">Буруу утга оруулсан байна!</div>';
+                return;
+            }
+
+            var originalNum = n;
+            var sum = 0;
+            
+            // Тооны цифрүүдийн нийлбэрийг олъё
+            while (n > 0) {
+                sum = sum + (n % 10);
+				// Mathfloor нь багаар тойлоно
+                n = Math.floor(n / 10);
+            }
+
+            // sum-г string болгож палиндром гэж таамаглав
+            var sumStr = sum.toString();
+            var isPalindrome = true; 
+            
+            // Эхлэлээс төгсгөл хүртэл палиндром эсэхийг шалгах
+            for (let i = 0; i < Math.floor(sumStr.length / 2); i++) {
+                if (sumStr[i] !== sumStr[sumStr.length - 1 - i]) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+            
+            //Дэлгэцэнд үзүүлэх
+            document.body.innerHTML = `
+                <div class="result">
+                    <p>Өгөгдсөн тоо: ${originalNum}</p>
+                    <p>Цифрүүдийн нийлбэр: ${sum}</p>
+                    <p>${isPalindrome ? 'Палиндром мөн' : 'Палиндром биш'}</p>
+                </div>`;
+        };
+    </script>
 </head>
 <body>
-
-<main   class="resume_wrapper">
-	<aside class="resume_left">
-		<section class="resume_image">
-			<img src="/itu_lab/img/Altantsetseg tseej zurag.jpg" alt="CV_image">
-        </section>
-		<article class="resume_bottom">
-			<header class="resume_item resume_namerole">
-				<h4 class="name">Алтанцэцэг Төмөрбаатар</h4>
-				<h4 class="role">Санхүүгийн шинжээч</h4>
-            </header>
-			<section class="resume_item resume_profile">
-				<h4 class="resume_title">Мэдээлэл</h4>
-				<p class="resume_info">МУИС-БС Санхүү тэнхимийн оюутан. Сурахын зэрэгцээ МУИС-ийн бодлого 
-                    судалгааны лабораторид ажилладаг судлаач оюутан юм. 2024 оны байдлаар 
-                    банк санхүүгийн 500 гаруй мэргэжилтэнтэй тулж ажиллан MS-Power BI, MS
-                    Excel-ийн мэдлэгийг олгосон туршлагатай. Мөн мэдээллийн технологийн 
-                    HACKUM students болон Мандал ассетийн дэргэдэх Bluechip students клубийн 
-                    үндсэн гишүүн юм.</p>
-			</section>
-			<section class="resume_item resume_address">
-				<p class="resume_title">Гэрийн хаяг</p>
-				<p class="resume_info">
-					31-р хороо,<br/>
-					БГД "Шүүт хотхон",<br/>
-					Улаанбаатар хот, Монгол улс
-                </p>
-			</section>
-			<section class="resume_item resume_contact">
-				<h4 class="resume_title">Холбоо барих</h4>
-				<section class="resume_info">
-					<p class="resume_subtitle">Утас</p>
-					<p class="resume_subinfo">+976 94680921</p>
-				</section>
-				<section class="resume_info">
-					<h4 class="resume_subtitle">Имэйл</h4>
-					<p class="resume_subinfo">altaanaa116@gmail.com</p>
-				</section>
-			</section>
-			<section class="resume_item resume_skills">
-				<p class="resume_title">Ур чадвар</p>
-				<section class="resume_info">
-					<section class="skills_list">
-						<section class="skills_left">Power BI</section>
-						<section class="skills_bar">
-							<p>
-								<span style="width: 90%"></span>
-							</p>
-						</section>
-					</section>
-					<section class="skills_list">
-						<section class="skills_left">Excel</section>
-						<section class="skills_bar">
-							<p>
-								<span style="width:70%"></span>
-							</p>
-						</section>
-					</section>
-					<section class="skills_list">
-						<section class="skills_left">Researching</section>
-						<section class="skills_bar">
-							<p>
-								<span style="width: 60%"></span>
-							</p>
-						</section>
-					</section>
-					<section class="skills_list">
-						<section class="skills_left">Power Apps</section>
-						<section class="skills_bar">
-							<p>
-								<span style="width: 75%"></span>
-							</p>
-						</section>
-					</section>
-				</section>
-			</section>
-		</article>
-	</aside>
-	<main class="resume_right">
-		<section class="resume_item resume_namerole">
-			<h2 class="name">Т.Алтанцэцэг</h2>
-			<p class="role">Санхүүгийн шинжээч</p>
-		</section>
-		<section class="resume_item resume_education">
-			<p class="resume_title">Боловсрол</p>
-			<section class="resume_info">
-				<section class="resume_data">
-					<section class="year">2009 - 2021</section>
-					<section class="content">
-						<p>Хөвсгөл ДМЦ</p>
-						<p>Ахлах сургуулиа төгссөн</p>
-					</section>
-				</section>
-				<section class="resume_data">
-					<section class="year">2021 - 2025</section>
-					<section class="content">
-						<p>МУИС, санхүү менежмент бакалавр</p>
-						<p>Санхүүгийн шинжээчээр суралцаж байна.</p>
-					</section>
-				</section>
-			</section>
-		</section>
-		<section class="resume_item resume_experience">
-			<section class="resume_title">Туршлага, шагнал</section>
-			<section class="resume_info">
-				<section class="resume_data">
-					<section class="year">11th  MAY, 2024 </section>
-					<section class="content">
-						<p>Улсын олимпиад/p>
-						<p>Санхүүгийн улсын олимпиад 2-р байр </p>
-					</section>
-				</section>
-				<section class="resume_data">
-					<section class="year">3rd MAY, 2024 </section>
-					<section class="content">
-						<p>НББ</p>
-						<p>Санхүүгийн нягтлан бодох бүртгэлийн уралдаан тусгай байр</p>
-					</section>
-				</section>
-				<section class="resume_data">
-					<section class="year">1st DECEMBER 2023</section>
-					<section class="content">
-						<p>Мэргэжлийн тэмцээн</p>
-						<p>МУИС-ийн төрөлжсөн мэргэжлийн тэмцээн тэргүүн байр. </p>
-					</section>
-				</section>
-				<section class="resume_data">
-					<section class="year">2021</section>
-					<section class="content">
-						<p>12-р анги.</p>
-						<p> Математикийн ЭЕШ 800 Физик ЭЕШ 719 оноо</p>
-					</section>
-				</section>
-				<section class="resume_data">
-					<section class="year">2020-2021</section>
-					<section class="content">
-						<p>11-р анги.</p>
-						<p>Математик-Байгалийн ухааны төвийн бүсийн тавдугаар 
-                            олимпиад Нэгдсэн дүнгээр Дэд байр. </p>
-					</section>
-				</section>
-			</section>
-		</section>
-        <!-- Сонирхол -->
-		<section class="resume_item resmue_interests">
-			<section class="resume_title">Сонирхол</section>
-			<section class="resume_info">
-				<section class="interests">
-					<section class="int_icon">
-						<i class="fa fa-bicycle"></i>
-					</section>
-					<section class="int_data">Дугуй унах</section>
-				</section>
-				<section class="interests">
-					<section class="int_icon">
-						<i class="fas fa-book-open"></i>
-					</section>
-					<section class="int_data">Ном унших</section>
-				</section>
-				<section class="interests">
-					<section class="int_icon">
-						<i class="fas fa-film"></i>
-					</section>
-					<section class="int_data">Кино үзэх</section>
-				</section>
-				<section class="interests">
-					<section class="int_icon">
-						<i class="fa fa-music"></i>
-					</section>
-					<section class="int_data">Хөгжим сонсох</section>
-				</section>
-			</section>
-		</section>
-	</main>
-</main>
-
 </body>
 </html>

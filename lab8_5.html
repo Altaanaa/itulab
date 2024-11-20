@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цагаас хамаарсан тооцоолол</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 300px;
+        }
+        .time-display {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #666;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .operation-type {
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        input {
+            padding: 5px;
+            margin: 10px;
+            width: 100px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function calculate() {
+            // Одоогийн цагийг авах
+            const currentTime = new Date();
+            const currentHour = currentTime.getHours();
+
+            // // Оролтын утгыг авах
+            const inputNumber = parseFloat(document.getElementById('number').value);
+
+            // Оролтын шалгалт
+            if (isNaN(inputNumber)) {
+                document.getElementById('result').innerHTML = "Зөв тоо оруулна уу!";
+                return;
+            }
+
+            let result;
+            let operationType;
+
+            // Цагаас хамаарч үйлдэл сонгох
+            if (currentHour >= 6 && currentHour < 12) {
+                // Өглөөний үйлдэл - квадрат зэрэг
+                result = Math.pow(inputNumber, 2);
+                operationType = "Өглөөний үйлдэл: Квадрат зэрэг";
+            } else if (currentHour >= 18 && currentHour < 24) {
+                // Оройн үйлдэл - язгуур
+                result = Math.sqrt(inputNumber);
+                operationType = "Оройн үйлдэл: Квадрат язгуур";
+            } else {
+                // Бусад цагт
+                result = "Одоо өглөө эсвэл орой биш байна (Өглөө: 6-12 цаг, Орой: 18-24 цаг)";
+                operationType = "Цаг: Бусад";
+            }
+
+            // Үр дүнг харуулах
+            document.getElementById('result').innerHTML = `
+                <div class="operation-type">${operationType}</div>
+                ${typeof result === 'number' ? 
+                    `<p>Оролт: ${inputNumber}</p>
+                     <p>Хариу: ${result.toFixed(4)}</p>` 
+                    : `<p>${result}</p>`}
+            `;
+        }
+
+        window.onload = function() {
+            // Одоогийн цагийг харуулах
+            const now = new Date();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            
+            document.getElementById('time').innerHTML = 
+                `Одоогийн цаг: ${hour}:${minute < 10 ? '0' + minute : minute}`;
+                
+            // Тооцоолол автоматаар хийх
+            document.getElementById('number').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    calculate();
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Цагаас хамаарсан тооцоолол</h2>
+        <div id="time" class="time-display"></div>
+        <div>
+            <input type="number" id="number" placeholder="Тоо оруулна уу">
+            <button onclick="calculate()">Тооцоолох</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+</body>
+</html>

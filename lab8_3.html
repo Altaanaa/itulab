@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Байшингийн тоот хайх</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(242, 230, 230);
+            background-image: url(./img/apartment.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .result {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgb(186, 193, 255);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .building-info {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Байшингийн мэдээлэл
+            const APARTMENTS_PER_FLOOR = 4;  // Давхарт байх айлын тоо
+            const FLOORS = 9;                // Давхрын тоо
+            const ENTRANCES = 3;             // Орцны тоо
+            
+            // Хэрэглэгчээс тоотын дугаар авах
+            var apartmentNumber = window.prompt("Тоотын дугаарыг оруулна уу", "1-108");
+            
+            // Тоо руу хөрвүүлэх
+            apartmentNumber = parseInt(apartmentNumber);
+            
+            // Оролтын шалгалт
+            if (isNaN(apartmentNumber) || apartmentNumber < 1) {
+                document.body.innerHTML = '<div class="result">Буруу дугаар оруулсан байна!</div>';
+                return;
+            }
+
+            // Нийт айлын тоог тооцоолох
+            const totalApartments = APARTMENTS_PER_FLOOR * FLOORS * ENTRANCES;
+            
+            if (apartmentNumber > totalApartments) {
+                document.body.innerHTML = `
+                    <div class="result">
+                        <p>Байшинд ${totalApartments} тоот байгаа тул ${apartmentNumber} тоот байхгүй!</p>
+                    </div>`;
+                return;
+            }
+
+            // 1 орцонд байгаа айл
+            const apartmentsPerEntrance = APARTMENTS_PER_FLOOR * FLOORS;
+            
+            // Орц тодорхойлох
+            let entrance = Math.ceil(apartmentNumber / apartmentsPerEntrance);
+            
+            // Тухайн орц дахь тоотын дугаар
+            let apartmentInEntrance = apartmentNumber - ((entrance - 1) * apartmentsPerEntrance);
+            
+            // Давхар тодорхойлох
+            let floor = Math.ceil(apartmentInEntrance / APARTMENTS_PER_FLOOR);
+            
+            // Давхар дахь тоотын дугаар
+            let doorNumber = apartmentInEntrance - ((floor - 1) * APARTMENTS_PER_FLOOR);
+
+            // Үр дүнг харуулах
+            document.body.innerHTML = `
+                <div class="result">
+                    <h2>${apartmentNumber} тоот нь:</h2>
+                    <p>${entrance}-р орцны</p>
+                    <p>${floor}-р давхрын</p>
+                    <p>${doorNumber}-р хаалга</p>
+                    
+                    <div class="building-info">
+                        <h3>Байшингийн мэдээлэл:</h3>
+                        <p>Нийт орц: ${ENTRANCES}</p>
+                        <p>Давхрын тоо: ${FLOORS}</p>
+                        <p>Давхар дахь айлын тоо: ${APARTMENTS_PER_FLOOR}</p>
+                        <p>Нийт тоотын тоо: ${totalApartments}</p>
+                    </div>
+                </div>`;
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

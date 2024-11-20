@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чоно туулай хоёр</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .result {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .details {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // ЗаЙГ ОРУУЛАХ
+            var s = window.prompt("Чоно туулай хоёрын хоорондох зайг метрээр илэрхийл", "0");
+            
+            // Зайг тоо болгон хөрвүүлэх
+            s = parseInt(s);
+            
+            // Оруулсан утга шалгах 
+            if (isNaN(s) || s < 0) {
+                document.body.innerHTML = '<div class="result">Буруу утга оруулсан байна!</div>';
+                return;
+            }
+
+            // Хурдуудыг м/с болгоё
+            var wolfSpeed = 25 * (1000 / 3600);    
+            var rabbitSpeed = 18 * (1000 / 3600); 
+            
+            // Эндээс харьцангуй хурд нь м/с
+            var relativeSpeed = wolfSpeed - rabbitSpeed; 
+            
+            // Хугацааг олох
+            var time = s / relativeSpeed;
+            
+            // Минут секунд болгох
+            var minutes = Math.floor(time / 60);
+            var seconds = Math.round(time % 60);
+
+            // Дэлгэцэнд харуулъя
+            document.body.innerHTML = `
+                <div class="result">
+                    <h2>Тооцооны үр дүн</h2>
+                    <p>Анхны зай: ${s} метр</p>
+                    <p>Барьж авах хугацаа: ${minutes} минут ${seconds} секунд</p>
+                    <div class="details">
+                        <p>Чоно: 25 км/цаг (${wolfSpeed.toFixed(2)} м/сек)</p>
+                        <p>Туулай: 18 км/цаг (${rabbitSpeed.toFixed(2)} м/сек)</p>
+                        <p>Харьцангуй хурд: ${relativeSpeed.toFixed(2)} м/сек</p>
+                    </div>
+                </div>`;
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
