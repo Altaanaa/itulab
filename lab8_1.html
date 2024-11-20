@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторийн ажил №8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #060505;
+        }
+        .result {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgb(255, 230, 230);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let n = window.prompt("Тоог оруулна уу", "0");
+            
+            // Гараас оруулсан утгыг тоо болгох
+            n = parseInt(n);
+            
+            if (isNaN(n)) {
+                document.body.innerHTML = '<div class="result">Буруу утга оруулсан байна!</div>';
+                return;
+            }
+
+            let originalNum = n;
+            let sum = 0;
+            
+            // Calculate sum of digits
+            while (n > 0) {
+                sum = sum + (n % 10);
+                n = Math.floor(n / 10);
+            }
+
+            // Нэмсэн тоогоо тэмдэгтэд хөрвүүлж палиндром мөн гэсэн таамаглал өгсөн
+            let sumStr = sum.toString();
+            let isPalindrome = true;
+            
+            // Тухайн нэмсэн утга нь эхлэлээс төгсгөл хүртэл үнэн эсэхийг шалгана, хэрвээ худал бол break авна
+            for (let i = 0; i < Math.floor(sumStr.length / 2); i++) {
+                if (sumStr[i] !== sumStr[sumStr.length - 1 - i]) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+            
+            // Дэлгэцэнд харуулах
+            document.body.innerHTML = `
+                <div class="result">
+                    <p>Өгөгдсөн тоо: ${originalNum}</p>
+                    <p>Цифрүүдийн нийлбэр: ${sum}</p>
+                    <p>${isPalindrome ? 'Палиндром мөн' : 'Палиндром биш'}</p>
+                </div>`;
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
