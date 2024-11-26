@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+html,
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  height: 90%;
+  width: 90%;
+}
+
+.title,
+#question,
+#answer {
+  text-align: center;
+}
+
+#question,
+#answer,
+#keyboard {
+  margin-top: 50px; 
+}
+
+.title {
+  font-size: 40px;
+  font-family: "Press Start 2P", cursive;
+}
+
+/* .life {
+  float: right;
+} */
+
+#man {
+  display: block;
+  margin: 0 auto;
+  float: left;
+  height: 90%;
+}
+
+#question {
+  font-size: 20px;
+}
+
+#answer {
+  font-size: 15px;
+}
+
+#keyboard {
+  text-align: center;
+}
+ #right{
+    margin-top: 10rem;
+ }
+
+.button {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(29, 82, 6);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+}
+button:hover {
+  background-color: rgb(216, 112, 204);
+}
+a button{
+      width: 180px;
+      height: 50px;
+      background-color: rgb(233, 196, 202);
+      font-size: 20px;
+      color: rgb(17, 15, 15);
+      border-radius: 30%;
+      border-color: rgb(252, 252, 18);
+      border-width: 3px;
+}

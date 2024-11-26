@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Second Timer</title>
+    <style>
+        .finished {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>30 Second Timer</h1>
+    <div id="timer">30</div>
+    <button onclick="startTimer()">Start Timer</button>
+
+    <script>
+        // toog hodolgoh
+        const timerA = document.getElementById('timer');
+        var timeLeft = 30;
+        var timerInterval;
+
+        // Start 
+        function startTimer() {
+            clearInterval(timerInterval);
+
+            // Update timer 
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                // delgets Deer haruulah
+                timerA.textContent = timeLeft;
+                // Duusah
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerA.textContent = "Цаг дууслаа!";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

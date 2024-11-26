@@ -1,0 +1,65 @@
+body{
+   
+    background-image: url(.././img/hangman_home.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: rgb(233, 196, 202);
+ } 
+ h1 {
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   text-align: center;
+   margin-top: 200px;
+   color: rgb(239, 176, 187);;
+ }
+ .play {
+      text-align: center;
+       border-radius: 0px;
+       margin-top: 50px;   
+ }
+ .play button {
+      width: 180px;
+      height: 50px;
+      background-color: rgb(233, 196, 202);
+      font-size: 20px;
+      color: rgb(17, 15, 15);
+      border-radius: 30%;
+      border-color: rgb(252, 252, 18);
+      border-width: 3px;
+ }
+ .how button{
+   width: 180px;
+   height: 50px;
+   background-color: rgb(233, 196, 202);
+   font-size: 18px;
+   color: rgb(25, 18, 18);
+   margin-top: 50px;
+   text-align: center;
+   border-radius: 30%;
+    border-color: rgb(252, 252, 18);
+    border-width: 3px;
+ }
+ .how {
+    text-align: center;
+ }
+ .box {
+   width: 20rem;
+   text-align: justify;
+   margin-left: 30rem;
+   margin-top: 1rem;
+ }
+ h2 {
+   margin-left: 34rem;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   color: rgb(20, 20, 0);
+ }
+ button{
+      width: 180px;
+      height: 50px;
+      background-color: rgb(233, 196, 202);
+      font-size: 20px;
+      color: rgb(17, 15, 15);
+      border-radius: 30%;
+      border-color: rgb(252, 252, 18);
+      border-width: 3px;
+ }

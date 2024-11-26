@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Pade ruu newtreh</h1>
+    <script>
+        var Count = localStorage.getItem('pageVisits') || 0;
+        //too ruu horwuuleh
+        Count = Number(Count) + 1;
+        // local storagedee hadgalah
+        localStorage.setItem('pageVisits', Count);
+        document.write(Count + " udaa orson")
+    </script>
+</body>
+</html>
