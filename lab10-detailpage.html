@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Detail</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-image: url(./img/lab10.jpg);
+        }
+        .news-detail {
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .news-detail h1 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .news-detail-meta {
+            color: #021d2e;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        #error {
+            color: red;
+            text-align: center;
+        }
+        #loading {
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <a href="./lab10.html" class="back-link">← Буцах</a>
+    
+    <div id="loading">Ачаалж байна...</div>
+    <div id="error"></div>
+    <div id="newsDetail" class="news-detail"></div>
+
+    <script>
+        // Global variable-д хадгална
+        window.newsItems = window.newsItems || [];
+
+        // Ямар ч зүйл байхгүй тохиолдолд RSS-г дуудах функц
+        function fetchRSSFeed() {
+            return new Promise((resolve, reject) => {
+                // XMLHttpRequest объект үүсгэх
+                const xhr = new XMLHttpRequest();
+                
+                // RSS хангамжийг татахын тулд CORS ашиглана
+                const corsProxy = 'https://api.allorigins.win/raw?url=';
+                const rssUrl = encodeURIComponent('https://ikon.mn/rss');
+                
+                //Хүсэлтийг хүлээн авах
+                xhr.open('GET', corsProxy + rssUrl, true);
+
+                // Амжилттай хариу үйлдэл үзүүлэх
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // XML хариултыг задлах
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+                        
+                        if (xmlDoc) {
+                            const items = xmlDoc.getElementsByTagName('item');
+                            const newsItems = [];
+
+                            // News item-г задлах
+                            for (let i = 0; i < items.length; i++) {
+                                const item = items[i];
+                                
+                                // Гол мэдээллийг задлах
+                                const title = item.getElementsByTagName('title')[0]?.textContent || 'Гарчиггүй';
+                                const link = item.getElementsByTagName('link')[0]?.textContent || '#';
+                                const description = item.getElementsByTagName('description')[0]?.textContent || 'Дэлгэрэнгүй мэдээлэл байхгүй';
+                                const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || 'Хугацаа тодорхойгүй';
+
+                                newsItems.push({
+                                    title,
+                                    link,
+                                    description,
+                                    pubDate
+                                });
+                            }
+
+                            resolve(newsItems);
+                        } else {
+                            reject(new Error('Failed to parse XML'));
+                        }
+                    } else {
+                        reject(new Error(`Failed to load news. Status: ${xhr.status}`));
+                    }
+                };
+
+                // Network error засах
+                xhr.onerror = function() {
+                    reject(new Error('Network error. Unable to fetch news.'));
+                };
+
+                // Хүсэлт илгээх
+                xhr.send();
+            });
+        }
+
+        // Мэдээний дэлгэрэнгүйг харуулах функц
+        async function displayNewsDetail() {
+            const loadingIndicator = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const newsDetailDiv = document.getElementById('newsDetail');
+
+            try {
+                // URL-аас мэдээний индексийг авах
+                const urlParams = new URLSearchParams(window.location.search);
+                const newsIndex = urlParams.get('index');
+
+                // Хэрэв мэдээ байхгүй бол тэдгээрийг авах
+                if (window.newsItems.length === 0) {
+                    window.newsItems = await fetchRSSFeed();
+                }
+
+                // Индексийг баталгаажуулах
+                if (newsIndex === null || newsIndex < 0 || newsIndex >= window.newsItems.length) {
+                    throw new Error('Invalid or no news item selected.');
+                }
+
+                // Тодорхой мэдээ авах
+                const newsItem = window.newsItems[Number(newsIndex)];
+
+                // Өмнөх алдааг арилгах
+                loadingIndicator.style.display = 'none';
+                errorDiv.textContent = '';
+
+                // Мэдээний дэлгэрэнгүйг харуулах
+                newsDetailDiv.innerHTML = `
+                    <h1>${newsItem.title}</h1>
+                    <div class="news-detail-meta">
+                        <p>Published: ${newsItem.pubDate}</p>
+                        <p><a href="${newsItem.link}" target="_blank">Original Link</a></p>
+                    </div>
+                    <div class="news-content">
+                        ${newsItem.description}
+                    </div>
+                `;
+
+                // Гарчигийг солих
+                document.title = newsItem.title;
+            } catch (error) {
+                // Алдааг зохицуулах
+                loadingIndicator.style.display = 'none';
+                errorDiv.textContent = error.message;
+                newsDetailDiv.innerHTML = '';
+            }
+        }
+
+        // Хуудсыг ачаалах үед мэдээний дэлгэрэнгүйг харуулах
+        window.addEventListener('DOMContentLoaded', displayNewsDetail);
+    </script>
+</body>
+</html>

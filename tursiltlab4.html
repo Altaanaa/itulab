@@ -3,69 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторийн ажил №8</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .result {
-            padding: 20px;
-            border-radius: 8px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-    </style>
-    <script>
-        window.onload = function() {
-            var n = window.prompt("Тоог оруулна уу", "0");
-            
-            // Тоонд хөрвүүлэх
-            n = parseInt(n);
-            // Хэрвээ алдаатай бол 
-            if (isNaN(n)) {
-                document.body.innerHTML = '<div class="result">Буруу утга оруулсан байна!</div>';
-                return;
-            }
-
-            var originalNum = n;
-            var sum = 0;
-            
-            // Тооны цифрүүдийн нийлбэрийг олъё
-            while (n > 0) {
-                sum = sum + (n % 10);
-				// Mathfloor нь багаар тойлоно
-                n = Math.floor(n / 10);
-            }
-
-            // sum-г string болгож палиндром гэж таамаглав
-            var sumStr = sum.toString();
-            var isPalindrome = true; 
-            
-            // Эхлэлээс төгсгөл хүртэл палиндром эсэхийг шалгах
-            for (let i = 0; i < Math.floor(sumStr.length / 2); i++) {
-                if (sumStr[i] !== sumStr[sumStr.length - 1 - i]) {
-                    isPalindrome = false;
-                    break;
-                }
-            }
-            
-            //Дэлгэцэнд үзүүлэх
-            document.body.innerHTML = `
-                <div class="result">
-                    <p>Өгөгдсөн тоо: ${originalNum}</p>
-                    <p>Цифрүүдийн нийлбэр: ${sum}</p>
-                    <p>${isPalindrome ? 'Палиндром мөн' : 'Палиндром биш'}</p>
-                </div>`;
-        };
-    </script>
+    <title>Document</title>
 </head>
+<style>
+    
+    .main {
+  margin-left: 100px;
+}
+.main-body{
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  width: 80%;
+  flex-wrap: wrap;
+}
+.item {
+  width: 200px;
+  height: 200px;
+  background-color: #032f6e;
+  font-size: 20px;
+  color: azure;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.item p{
+  font-size: 14px;
+  text-align: end;
+  padding: 12px;
+}
+a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.quant{
+  background-color: #088559;
+}
+.econ{
+  background-color: #f73d84;
+}
+.investment{
+  background-color: #b6593a;
+}
+.asset{
+  background-color: #212042;
+}
+.portfolio{
+  background-color: #3a087b;
+}
+.wealth{
+  background-color: #ffca00;
+}
+</style>
 <body>
+    
+    <div class="main">
+        <h1>Хичээлүүд</h1>
+        <Section class="main-body">
+         <div class="item quant">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <div class="item econ">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <div class="item investment">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <div class="item asset">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <div class="item portfolio">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <div class="item wealth">
+           <a href="#">Quantitative methods</a>
+           <p>2024</p>
+         </div>
+         <script><script>
+            // Select main container and items
+            const main = document.querySelector('.main');
+            const items = document.querySelectorAll('.item');
+            
+            // Step 1: Extract unique class names (excluding 'item')
+            const classNames = Array.from(items).reduce((set, item) => {
+              const classes = Array.from(item.classList).filter(cls => cls !== 'item');
+              classes.forEach(cls => set.add(cls));
+              return set;
+            }, new Set());
+            
+            // Step 2: Create a container for filter buttons
+            const filterContainer = document.createElement('div');
+            filterContainer.style.marginBottom = '20px';
+            main.insertBefore(filterContainer, main.querySelector('.main-body'));
+            
+            // Step 3: Create filter buttons dynamically
+            classNames.forEach(className => {
+              const button = document.createElement('button');
+              button.textContent = capitalizeFirstLetter(className); // Capitalize class name for the button text
+              button.style.margin = '5px';
+              button.style.padding = '10px 20px';
+              button.style.cursor = 'pointer';
+              button.style.border = 'none';
+              button.style.borderRadius = '5px';
+              button.style.backgroundColor = getComputedStyle(document.querySelector(`.${className}`)).backgroundColor;
+              button.style.color = 'white';
+            
+              button.addEventListener('click', () => filterItemsByClass(className));
+              filterContainer.appendChild(button);
+            });
+            
+            // Step 4: Add "Show All" button
+            const showAllButton = document.createElement('button');
+            showAllButton.textContent = 'Show All';
+            showAllButton.style.margin = '5px';
+            showAllButton.style.padding = '10px 20px';
+            showAllButton.style.cursor = 'pointer';
+            showAllButton.style.border = 'none';
+            showAllButton.style.borderRadius = '5px';
+            showAllButton.style.backgroundColor = 'black';
+            showAllButton.style.color = 'white';
+            
+            showAllButton.addEventListener('click', () => filterItemsByClass(null));
+            filterContainer.appendChild(showAllButton);
+            
+            // Step 5: Filter items based on class
+            function filterItemsByClass(className) {
+              items.forEach(item => {
+                if (!className || item.classList.contains(className)) {
+                  item.style.display = '';
+                } else {
+                  item.style.display = 'none';
+                }
+              });
+            }
+            
+            // Helper function: Capitalize first letter
+            function capitalizeFirstLetter(str) {
+              return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+            </script>
+            </script>
 </body>
 </html>

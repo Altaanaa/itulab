@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сүүлийн мэдээ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .news-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .news-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-item a {
+            color: #333;
+            text-decoration: none;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+        .news-item-date {
+            color: #666;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+        #loading {
+            text-align: center;
+            color: #666;
+        }
+        #error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сүүлийн мэдээ</h1>
+    <div id="loading">Loading news...</div>
+    <div id="error"></div>
+    <ul id="newsList" class="news-list"></ul>
+
+    <script>
+        // Global variable to store news items for detail page
+        window.newsItems = [];
+
+        // Function to parse XML and extract news items
+        function parseRSSFeed(xmlDoc) {
+            const items = xmlDoc.getElementsByTagName('item');
+            const newsList = document.getElementById('newsList');
+            const loadingIndicator = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+
+            // Clear loading indicator
+            loadingIndicator.style.display = 'none';
+
+            // Check if there are any items
+            if (items.length === 0) {
+                errorDiv.textContent = 'No news items found.';
+                return;
+            }
+
+            // Loop through news items
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                
+                // Extract key information
+                const title = item.getElementsByTagName('title')[0]?.textContent || 'Untitled';
+                const link = item.getElementsByTagName('link')[0]?.textContent || '#';
+                const description = item.getElementsByTagName('description')[0]?.textContent || 'No description available';
+                const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || 'Unknown date';
+
+                // Store full item details for potential detail page
+                const fullItemDetails = {
+                    title: title,
+                    link: link,
+                    description: description,
+                    pubDate: pubDate
+                };
+
+                // Add to global news items
+                window.newsItems.push(fullItemDetails);
+
+                // Create list item
+                const listItem = document.createElement('li');
+                listItem.className = 'news-item';
+                listItem.innerHTML = `
+                    <a href="lab10-detailpage.html?index=${i}">${title}</a>
+                    <span class="news-item-date">${pubDate}</span>
+                `;
+
+                // Add to news list
+                newsList.appendChild(listItem);
+            }
+        }
+
+        // XMLHttpRequest to fetch RSS feed
+        function fetchRSSFeed() {
+            // Create XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            
+            // Use a CORS proxy to fetch the RSS feed
+            const corsProxy = 'https://api.allorigins.win/raw?url=';
+            const rssUrl = encodeURIComponent('https://ikon.mn/rss');
+            
+            // Configure the request
+            xhr.open('GET', corsProxy + rssUrl, true);
+
+            // Handle successful response
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Parse XML response
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+                    
+                    if (xmlDoc) {
+                        parseRSSFeed(xmlDoc);
+                    } else {
+                        // Handle parsing error
+                        const errorDiv = document.getElementById('error');
+                        errorDiv.textContent = 'Failed to parse XML.';
+                    }
+                } else {
+                    // Handle error
+                    const errorDiv = document.getElementById('error');
+                    const loadingIndicator = document.getElementById('loading');
+                    
+                    errorDiv.textContent = `Failed to load news. Status: ${xhr.status}`;
+                    loadingIndicator.style.display = 'none';
+                }
+            };
+
+            // Handle network errors
+            xhr.onerror = function() {
+                const errorDiv = document.getElementById('error');
+                const loadingIndicator = document.getElementById('loading');
+                
+                errorDiv.textContent = 'Network error. Unable to fetch news.';
+                loadingIndicator.style.display = 'none';
+            };
+
+            // Send the request
+            xhr.send();
+        }
+
+        // Fetch RSS feed when page loads
+        window.addEventListener('DOMContentLoaded', fetchRSSFeed);
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Drawing App</title>
+    <style>
+        #drawingCanvas {
+            border: 2px solid black;
+            cursor: crosshair;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Зурах</h1>
+    <canvas id="drawingCanvas" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Event listener ашиглан дарах үед зураг эхлэх цэгээ тодорхойлох
+        canvas.addEventListener('mousedown', startDrawing);
+        
+        // Event listener ашиглан mouse хөдөлгөх үед зурагдах
+        canvas.addEventListener('mousemove', draw);
+        
+        // Event listeners ашиглан mouse авах үед зургаа зогсоох
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        function startDrawing(e) {
+            // Эхлүүлэх цэгээ хадгалах
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function draw(e) {
+            // Хэрвээ isDraeing үнэн биш бол буцаах
+            if (!isDrawing) return;
+
+            // Шинэ замаа эхлүүлэх
+            ctx.beginPath();
+            
+            // Эхлүүлэх цэгээс эхэлнэ
+            ctx.moveTo(lastX, lastY);
+            
+            // Дарсан цэгээс шулуун зурах
+            ctx.lineTo(e.offsetX, e.offsetY);
+            
+            // Шулуун хэлбэр
+            ctx.stroke();
+            
+            // Замаа шинэчлэнэ
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // Зураасаа янзлах
+        ctx.strokeStyle = '#000000'; 
+        ctx.lineWidth = 2; 
+        ctx.lineCap = 'round';  
+    </script>
+</body>
+</html>
