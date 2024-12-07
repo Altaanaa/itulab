@@ -132,9 +132,9 @@
                     if (xmlDoc) {
                         parseRSSFeed(xmlDoc);
                     } else {
-                        // Handle parsing error
+                        // Үгүй бол алдааг гаргана
                         const errorDiv = document.getElementById('error');
-                        errorDiv.textContent = 'Failed to parse XML.';
+                        errorDiv.textContent = 'RSS татахад алдаа гарлаа.';
                     }
                 } else {
                     // Алдааг засах

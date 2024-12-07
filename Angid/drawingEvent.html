@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Drawing App</title>
+    <title>Drawing Lab</title>
     <style>
         #drawingCanvas {
             border: 2px solid black;
@@ -23,13 +23,13 @@
 
     <script>
         const canvas = document.getElementById('drawingCanvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');  //2D зурлагын контексийг авсан
 
-        let isDrawing = false;
-        let lastX = 0;
-        let lastY = 0;
+        var isDrawing = false;
+        var lastX = 0;
+        var lastY = 0;
 
-        // Event listener ашиглан дарах үед зураг эхлэх цэгээ тодорхойлох
+        // Event listener ашиглан зураг эхлэх цэгээ тодорхойлох
         canvas.addEventListener('mousedown', startDrawing);
         
         // Event listener ашиглан mouse хөдөлгөх үед зурагдах
@@ -42,23 +42,19 @@
         function startDrawing(e) {
             // Эхлүүлэх цэгээ хадгалах
             isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
+            [lastX, lastY] = [e.offsetX, e.offsetY];   //Canvas доторх хулганын x, y координатыг авна
         }
 
         function draw(e) {
-            // Хэрвээ isDraeing үнэн биш бол буцаах
+            // Хэрвээ isDrawing үнэн биш бол буцаах
             if (!isDrawing) return;
-
-            // Шинэ замаа эхлүүлэх
-            ctx.beginPath();
-            
-            // Эхлүүлэх цэгээс эхэлнэ
+            // Эхлүүлэх цэгээс эхлэх тул өмнөх цэг рүү очно
             ctx.moveTo(lastX, lastY);
             
             // Дарсан цэгээс шулуун зурах
             ctx.lineTo(e.offsetX, e.offsetY);
             
-            // Шулуун хэлбэр
+            // Шулуунаа харагдуулна
             ctx.stroke();
             
             // Замаа шинэчлэнэ
