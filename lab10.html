@@ -68,10 +68,10 @@
             const loadingIndicator = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
 
-            // Clear loading indicator
+            //loading indicator цэвэрлэх
             loadingIndicator.style.display = 'none';
 
-            // Check if there are any items
+            // Item дотор ямар нэгэн юм байгааг шалгах
             if (items.length === 0) {
                 return;
             }
@@ -105,12 +105,12 @@
                     <span class="news-item-date">${pubDate}</span>
                 `;
 
-                // Жагсаалтанд нэмэх
+                // Жагсаалтанд нэмэх newsList элементэд шинэ элемент нэмэхэд ашиглагддаг.
                 newsList.appendChild(listItem);
             }
         }
 
-        // XMLHttpRequest to fetch RSS feed
+        // XMLHttpRequest to fetch RSS feed хүсэлтийг илгээх
         function fetchRSSFeed() {
             // XMLHttpRequest объект үүсгэх
             const xhr = new XMLHttpRequest();
@@ -125,7 +125,7 @@
             // Амжилттай гэсэн хариу 
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    // XML хариултыг задлах
+                    // XML хариултыг задлах Энэ кодын зорилго нь XML форматаар ирсэн өгөгдлийг JavaScript-д ашиглаж болох DOM (Document Object Model) объект болгон хувиргах
                     const parser = new DOMParser();
                     const xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
                     
@@ -138,23 +138,13 @@
                     }
                 } else {
                     // Алдааг засах
-                    const errorDiv = document.getElementById('error');
-                    const loadingIndicator = document.getElementById('loading');
+            //         const errorDiv = document.getElementById('error');
+            //         const loadingIndicator = document.getElementById('loading');
                     
-                    errorDiv.textContent = `Failed to load news. Status: ${xhr.status}`;
-                    loadingIndicator.style.display = 'none';
-                }
-            };
-
-            // Network errors засах
-            // xhr.onerror = function() {
-            //     const errorDiv = document.getElementById('error');
-            //     const loadingIndicator = document.getElementById('loading');
-                
-            //     errorDiv.textContent = 'Network error. Unable to fetch news.';
-            //     loadingIndicator.style.display = 'none';
+            //         errorDiv.textContent = `Failed to load news. Status: ${xhr.status}`;
+            //         loadingIndicator.style.display = 'none';
+            //     }
             // };
-
             // Хүсэлт илгээх
             xhr.send();
         }
